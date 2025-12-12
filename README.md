@@ -2,12 +2,12 @@
 
 ## Overview
 
-This repository contains an experimental framework for hybrid quantum–classical diffusion models applied to Earth Observation (EO) data.
+This repository contains an experimental framework for quantum hybrid diffusion models applied to Earth Observation (EO) data.
 
 ## Project Structure
 
 * configs/ — Configuration files for different experimental setups (datasets, model size, noise schedule, quantum layers)
-* main.py — Main entry point to run training and sampling
+* main.py — Main script to run training and sampling
 * sampling.py — Sampling routines and preprocessing utilities for EO data
 * train.py — Training loop and optimization of the quantum hybrid diffusion model
 * unet.py — U-Net implementation used as the backbone of the denoising network
