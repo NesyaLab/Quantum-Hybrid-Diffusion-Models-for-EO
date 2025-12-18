@@ -25,12 +25,26 @@ python main.py --config configs/eurosat.py
 
 This project implements a denoising diffusion probabilistic model (DDPM) extended with variational quantum circuits. The flow is as follows:
 
-* Forward diffusion:
-  Noise is gradually added to the EO image following the standard DDPM process.
+Forward diffusion: Noise is gradually added to the EO image following the standard DDPM process.
 
-* Denoising U-Net:
-  A Quanvolutional Conditioned U-Net serves as the backbone for estimating the noise to be removed. This model is a hybrid quantum-classical architecture which applies operations to feature extraction stages via a novel quanvolutional approach within a conditioned diffusion framework.
+Denoising U-Net: A Quanvolutional Conditioned U-Net serves as the backbone for estimating the noise to be removed. This model is a hybrid quantum-classical architecture which applies operations to feature extraction stages via a novel quanvolutional approach within a conditioned diffusion framework.
 
-* Reverse diffusion sampling:
-  Using the learned score function, the model iteratively denoises a random Gaussian input to reconstruct a class-specific EO image.
+Reverse diffusion sampling: Using the learned score function, the model iteratively denoises a random Gaussian input to reconstruct a class-specific EO image.
 
+## Training Procedure Overview
+
+The following pseudocode describes the training procedure of the proposed QCU-Net model.
+
+PROCEDURE Train(Dataset_EO):
+  Initialize Classical Weights W
+  Initialize Quantum Theta
+
+  For each iteration (x_0, label):
+    t ~ Uniform({1,...T})
+    ε ~  N(0,1)
+    x_t= sqrt(α_t)*x_0 + sqrt(1- α_t)*ε
+    ε_pred= QCU-Net(x_t, label, t, Theta, W)
+    loss= MSE(ε, ε_pred)
+    update Theta, W using Adam Optimizer
+
+  
