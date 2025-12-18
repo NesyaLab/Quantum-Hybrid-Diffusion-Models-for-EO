@@ -1,11 +1,13 @@
 # Quantum-Hybrid-Diffusion-Models-for-EO
-<img width="1475" height="617" alt="image" src="https://github.com/user-attachments/assets/2da36116-aaf8-4528-815d-e3a807aefe77" />
-**Figure 1. Class-conditioned *Quantum Diffusion Model* for EO image generation.**  
-**Top:** The forward diffusion process \( q(x_t \mid x_{t-1}) \) (blue) progressively corrupts a clean RGB satellite patch \( x_0 \) into Gaussian noise \( x_T \).  
-The learned reverse process \( p_{\theta}(x_{t-1} \mid x_t, y) \) (purple) reconstructs the image step-by-step while being guided by the land-cover label \( y \), enabling class-specific generation (e.g., *residential*, *forest*, *river*, *crop*).  
-**Bottom:** The U-Net denoiser integrates both classical components (Convolutional, ResNet, and Attention blocks) and two quantum-enhanced residual variants.  
+![Class-conditioned Quantum Diffusion Model for EO image generation](https://github.com/user-attachments/assets/2da36116-aaf8-4528-815d-e3a807aefe77)
+
+**Class-conditioned *Quantum Diffusion Model* for EO image generation.**  
+**Top:** The forward diffusion process (blue) progressively corrupts a clean RGB satellite patch into Gaussian noise.  
+The learned reverse process (purple) reconstructs the image step-by-step while being guided by the land-cover label, enabling class-specific generation (e.g., *residential*, *forest*, *river*, *crop*).  
+**Bottom:** The U-Net denoiser integrates classical components (Convolutional, ResNet, and Attention blocks) and quantum-enhanced residual variants.  
 The *QuanResNet Block* (red) replaces the first convolution with a quanvolutional quantum filter applied to local spatial patches.  
-The *QResNet Block* (purple), placed at the bottleneck, replaces both convolutions with a Variational Quantum Circuit (VQC) acting on \( 2 \times 2 \times 3 \) feature blocks and applied to a fraction \( \rho \) of channels.
+The *QResNet Block* (purple), placed at the bottleneck, replaces both convolutions with a Variational Quantum Circuit (VQC) applied to a fraction of channels.
+
 ## Overview
 
 This repository contains an experimental framework for quantum hybrid diffusion models applied to Earth Observation (EO) data.
