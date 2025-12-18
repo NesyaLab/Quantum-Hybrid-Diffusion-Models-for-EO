@@ -5,6 +5,7 @@
 ## Overview
 
 This repository contains an experimental framework for quantum hybrid diffusion models applied to Earth Observation (EO) data.
+
 ![Class-conditioned Quantum Diffusion Model for EO image generation](https://github.com/user-attachments/assets/2da36116-aaf8-4528-815d-e3a807aefe77)
 
 **Class-conditioned *Quantum Diffusion Model* for EO image generation.**  
