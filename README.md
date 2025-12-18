@@ -1,4 +1,5 @@
 # Quantum-Hybrid-Diffusion-Models-for-EO
+<img width="1475" height="617" alt="image" src="https://github.com/user-attachments/assets/2da36116-aaf8-4528-815d-e3a807aefe77" />
 
 ## Overview
 
