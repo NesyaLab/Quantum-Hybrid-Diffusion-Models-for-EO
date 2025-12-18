@@ -23,28 +23,42 @@ python main.py --config configs/eurosat.py
 
 ## Quantum Hybrid Diffusion Pipeline
 
-This project implements a denoising diffusion probabilistic model (DDPM) extended with variational quantum circuits. The flow is as follows:
+This project implements a denoising diffusion probabilistic model (DDPM) extended with variational quantum circuits. The overall pipeline is composed of the following stages:
 
-Forward diffusion: Noise is gradually added to the EO image following the standard DDPM process.
+* **Forward diffusion**: Gaussian noise is progressively added to the EO images following the standard DDPM formulation.
 
-Denoising U-Net: A Quanvolutional Conditioned U-Net serves as the backbone for estimating the noise to be removed. This model is a hybrid quantum-classical architecture which applies operations to feature extraction stages via a novel quanvolutional approach within a conditioned diffusion framework.
+* **Denoising U-Net**: A Quanvolutional Conditioned U-Net (QCU-Net) is used as the backbone to estimate the noise component to be removed.
+  The model adopts a hybrid quantum–classical architecture, where variational quantum circuits are integrated into the feature extraction stages through a novel quanvolutional approach within a conditioned diffusion framework.
 
-Reverse diffusion sampling: Using the learned score function, the model iteratively denoises a random Gaussian input to reconstruct a class-specific EO image.
+* **Reverse diffusion sampling**: Starting from a random Gaussian input, the learned score function is iteratively applied to denoise the sample and reconstruct a class-conditioned EO image.
+
+---
 
 ## Training Procedure Overview
 
 The following pseudocode describes the training procedure of the proposed QCU-Net model.
 
-PROCEDURE Train(Dataset_EO):
-  Initialize Classical Weights W
-  Initialize Quantum Theta
+```text
+## Pseudocode
 
-  For each iteration (x_0, label):
-    t ~ Uniform({1,...T})
-    ε ~  N(0,1)
-    x_t= sqrt(α_t)*x_0 + sqrt(1- α_t)*ε
-    ε_pred= QCU-Net(x_t, label, t, Theta, W)
-    loss= MSE(ε, ε_pred)
-    update Theta, W using Adam Optimizer
+PROCEDURE Train(Dataset_EO):
+
+    Initialize classical weights W
+    Initialize quantum parameters Θ
+
+    FOR each training iteration (x₀, label) DO:
+
+        Sample t ~ Uniform({1, ..., T})
+        Sample ε ~ Normal(0, 1)
+
+        x_t ← √(α_t) · x₀ + √(1 − α_t) · ε
+
+        ε_pred ← QCU-Net(x_t, label, t, Θ, W)
+
+        loss ← MSE(ε, ε_pred)
+
+        Update Θ and W using Adam optimizer
+
+    END FOR
 
   
