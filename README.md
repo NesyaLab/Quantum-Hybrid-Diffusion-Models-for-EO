@@ -1,4 +1,10 @@
+
+
 # Quantum-Hybrid-Diffusion-Models-for-EO
+
+## Overview
+
+This repository contains an experimental framework for quantum hybrid diffusion models applied to Earth Observation (EO) data.
 ![Class-conditioned Quantum Diffusion Model for EO image generation](https://github.com/user-attachments/assets/2da36116-aaf8-4528-815d-e3a807aefe77)
 
 **Class-conditioned *Quantum Diffusion Model* for EO image generation.**  
@@ -8,9 +14,6 @@ The learned reverse process (purple) reconstructs the image step-by-step while b
 The *QuanResNet Block* (red) replaces the first convolution with a quanvolutional quantum filter applied to local spatial patches.  
 The *QResNet Block* (purple), placed at the bottleneck, replaces both convolutions with a Variational Quantum Circuit (VQC) applied to a fraction of channels.
 
-## Overview
-
-This repository contains an experimental framework for quantum hybrid diffusion models applied to Earth Observation (EO) data.
 
 ## Project Structure
 
